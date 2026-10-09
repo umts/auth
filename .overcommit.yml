@@ -1,0 +1,31 @@
+CommitMsg:
+  ALL:
+    enabled: false
+PreCommit:
+  ALL:
+    problem_on_unmodified_line: ignore
+    skip_if: ["test", "-f", ".git/MERGE_HEAD"]
+  ForbiddenBranches:
+    enabled: true
+    branch_patterns: ["master", "main"]
+  HamlLint:
+    enabled: true
+    on_warn: fail
+    required_executable: bundle
+    command: ["bundle", "exec", "haml-lint"]
+  OxFmt:
+    enabled: true
+    required_executable: npx
+    command: ["npx", "oxfmt"]
+  OxLint:
+    enabled: true
+    required_executable: npx
+    command: ["npx", "oxlint"]
+  RuboCop:
+    enabled: true
+    required_executable: bundle
+    command: ["bundle", "exec", "rubocop"]
+  Stylelint:
+    enabled: true
+    required_executable: npx
+    command: ["npx", "stylelint"]

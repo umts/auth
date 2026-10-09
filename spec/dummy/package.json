@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "rolldown app/javascript/application.js --dir app/assets/builds --format esm --sourcemap",
+    "build:css": "sass app/assets/stylesheets/application.scss:app/assets/builds/application.css --load-path=node_modules --pkg-importer=node --quiet-deps --silence-deprecation=import"
+  },
+  "dependencies": {
+    "@fontsource-utils/scss": "*",
+    "@fontsource/public-sans": "*",
+    "@umts/brand": "github:umts/brand#main",
+    "bootstrap": "*",
+    "rolldown": "*",
+    "run-pty": "*",
+    "sass": "*"
+  },
+  "allowScripts": {
+    "@parcel/watcher": true
+  }
+}
