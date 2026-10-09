@@ -1,0 +1,50 @@
+// stylelint-disable selector-class-pattern, custom-property-pattern
+
+@use "datatables.net-bs5/css/dataTables.bootstrap5";
+
+// Apply dark theming based on media query.
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dt-order-arrow_color: rgb(229 233 238);
+    --dt-order-arrow_color-current: rgb(229 233 238);
+    --dt-order-header_outline-hover: 2px solid rgb(255 255 255 / 5%);
+    --dt-row_background-hover: 255, 255, 255;
+    --dt-row_background-stripe: 255, 255, 255;
+    --dt-column-ordering_background: 255, 255, 255;
+  }
+}
+
+// Remove horizontal padding that the bootstrap theme erroneously adds.
+div.table-responsive > div.dt-container > div.row {
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+}
+
+// Override right alignment rules for typed columns.
+table.dataTable th.dt-type-numeric,
+table.dataTable th.dt-type-date,
+table.dataTable td.dt-type-numeric,
+table.dataTable td.dt-type-date {
+  text-align: unset;
+}
+
+// Override reversal rules for typed column headers.
+table.dataTable th.dt-type-numeric div.dt-column-header,
+table.dataTable th.dt-type-numeric div.dt-column-footer,
+table.dataTable th.dt-type-date div.dt-column-header,
+table.dataTable th.dt-type-date div.dt-column-footer,
+table.dataTable td.dt-type-numeric div.dt-column-header,
+table.dataTable td.dt-type-numeric div.dt-column-footer,
+table.dataTable td.dt-type-date div.dt-column-header,
+table.dataTable td.dt-type-date div.dt-column-footer {
+  flex-direction: row;
+}
+
+// Add a hover color instead of an outline for sort headers.
+table.dataTable thead > tr > th.dt-orderable-asc:hover,
+table.dataTable thead > tr > th.dt-orderable-desc:hover,
+table.dataTable thead > tr > td.dt-orderable-asc:hover,
+table.dataTable thead > tr > td.dt-orderable-desc:hover {
+  outline: none;
+  background-color: var(--bs-table-hover-bg);
+}

@@ -1,0 +1,24 @@
+on:
+  workflow_call:
+jobs:
+  haml-lint:
+    name: lib
+    uses: umts/shared-workflows/.github/workflows/haml-lint.yml@45a657bbe392751472f14fd638845093af4509cb # main
+  oxfmt:
+    name: lib
+    uses: umts/shared-workflows/.github/workflows/oxfmt.yml@45a657bbe392751472f14fd638845093af4509cb # main
+  oxlint:
+    name: lib
+    uses: umts/shared-workflows/.github/workflows/oxlint.yml@45a657bbe392751472f14fd638845093af4509cb # main
+  rspec:
+    name: lib
+    uses: umts/shared-workflows/.github/workflows/rspec.yml@45a657bbe392751472f14fd638845093af4509cb # main
+    with:
+      node: true
+      setup_command: "bin/rails javascript:build css:build"
+  rubocop:
+    name: lib
+    uses: umts/shared-workflows/.github/workflows/rubocop.yml@45a657bbe392751472f14fd638845093af4509cb # main
+  stylelint:
+    name: lib
+    uses: umts/shared-workflows/.github/workflows/stylelint.yml@45a657bbe392751472f14fd638845093af4509cb # main

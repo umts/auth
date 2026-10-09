@@ -1,0 +1,19 @@
+$asset-path: "" !default;
+
+@use "pkg:@fontsource/public-sans/scss" as public-sans;
+@use "pkg:@fontsource-utils/scss" as utils;
+@include utils.faces(
+  $metadata: public-sans.$metadata,
+  $directory: $asset-path,
+  $weights: (
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900,
+  )
+);

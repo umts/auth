@@ -1,0 +1,12 @@
+/coverage/
+/docs/.vitepress/cache/
+/docs/.vitepress/dist/
+/node_modules/
+/pkg/
+/spec/dummy/app/assets/builds/
+/spec/dummy/log/
+/spec/dummy/node_modules/
+/spec/dummy/public/assets/
+/spec/dummy/tmp/
+/spec/examples.txt
+umts-auth-*.gem

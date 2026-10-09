@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "docs": "vitepress dev docs",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "lint": "oxlint",
+    "lint:css": "stylelint **/*.css **/*.scss"
+  },
+  "devDependencies": {
+    "conventional-changelog-conventionalcommits": "< 10",
+    "oxfmt": "*",
+    "oxlint": "*",
+    "semantic-release": "*",
+    "stylelint": "*",
+    "stylelint-config-standard": "*",
+    "stylelint-config-standard-scss": "*",
+    "vitepress": "2.0.0-alpha.20"
+  },
+  "allowScripts": {
+    "fsevents": true
+  }
+}

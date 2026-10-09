@@ -1,0 +1,16 @@
+// The tom-select stylesheet references bootstrap vars as global ones and is not @use ready.
+@use "./bootstrap" as *;
+@import "tom-select/dist/scss/tom-select.bootstrap5";
+
+// Prevent jumping on page load.
+.form-select[multiple][data-controller="tom-select"] {
+  height: $input-height;
+}
+
+// Fix border radius in input groups.
+.input-group
+  > select.ts-hidden-accessible:first-child
+  + .ts-wrapper.ts-wrapper.ts-wrapper.ts-wrapper.ts-wrapper {
+  border-top-left-radius: $input-border-radius;
+  border-bottom-left-radius: $input-border-radius;
+}

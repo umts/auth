@@ -1,0 +1,8 @@
+linters:
+  ClassesBeforeIds:
+    EnforcedStyle: id
+  LineLength:
+    max: 120
+exclude:
+  - .bundle/**/*
+  - vendor/**/*
