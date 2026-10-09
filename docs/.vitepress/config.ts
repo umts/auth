@@ -14,9 +14,7 @@ export default defineConfig({
       },
       {
         text: "Reference",
-        items: [
-          { text: "Reference", link: "/reference" },
-        ],
+        items: [{ text: "Reference", link: "/reference" }],
       },
     ],
     socialLinks: [{ icon: "github", link: "https://github.com/umts/auth" }],
