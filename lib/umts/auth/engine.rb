@@ -20,7 +20,11 @@ module UMTS
 
         Rails.application.config.middleware.use OmniAuth::Builder do
           provider :entra_id, { tenant_id: UMTS::Auth.tenant_id }.merge(Rails.application.credentials[:entra_id] || {})
-          provider :developer, fields: %i[uid email first_name last_name], uid_field: :uid unless Rails.env.production?
+          if Rails.env.development? # simplecov:disable branch
+            # simplecov:disable
+            provider :developer, fields: %i[uid email first_name last_name], uid_field: :uid
+            # simplecov:enable
+          end
         end
       end
     end

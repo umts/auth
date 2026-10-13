@@ -11,5 +11,7 @@ AllCops:
     - .bundle/**/*
     - vendor/**/*
   NewCops: enable
+Metrics/AbcSize:
+  CountRepeatedAttributes: false
 Style/Documentation:
   Enabled: false
