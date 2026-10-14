@@ -2,6 +2,7 @@
 
 require_relative 'auth/engine'
 require_relative 'auth/version'
+require_relative 'authentication'
 
 module UMTS
   module Auth

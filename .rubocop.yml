@@ -13,5 +13,11 @@ AllCops:
   NewCops: enable
 Metrics/AbcSize:
   CountRepeatedAttributes: false
+RSpec/ExampleLength:
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+    - method_call
 Style/Documentation:
   Enabled: false
