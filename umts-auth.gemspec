@@ -19,6 +19,9 @@ Gem::Specification.new do |spec|
     Dir['{app,config,db,lib}/**/*', 'LICENSE.md', 'README.md']
   end
 
+  spec.add_dependency 'omniauth', '>= 2', '< 3'
+  spec.add_dependency 'omniauth-entra-id', '>= 3', '< 4'
+  spec.add_dependency 'omniauth-rails_csrf_protection', '>= 2', '< 3'
   spec.add_dependency 'rails', '>= 8.1', '< 8.2'
   spec.required_ruby_version = '>= 3.3.0'
 end
