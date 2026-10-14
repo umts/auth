@@ -4,9 +4,9 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'dotenv'
 gem 'capybara'
 gem 'cssbundling-rails'
+gem 'dotenv'
 gem 'faker'
 gem 'haml-lint', require: false
 gem 'haml-rails'
