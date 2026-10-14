@@ -11,6 +11,10 @@ module UMTS
       skip_after_action :verify_authorized, only: %i[create destroy], raise: false
     end
 
+    class_methods do
+      def after_authenticated(*, &) = after_action(*, only: :create, &)
+    end
+
     def create
       set_session
       redirect_to auth_referer || root_path
