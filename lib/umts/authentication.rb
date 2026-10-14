@@ -7,7 +7,8 @@ module UMTS
     extend ActiveSupport::Concern
 
     included do
-      skip_forgery_protection only: :destroy
+      skip_forgery_protection only: :destroy, raise: false
+      skip_after_action :verify_authorized, only: %i[create destroy], raise: false
     end
 
     def create
