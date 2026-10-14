@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require_relative 'auth/engine'
+require_relative 'auth/sessions_controller'
 require_relative 'auth/version'
-require_relative 'authentication'
 
 module UMTS
   module Auth
