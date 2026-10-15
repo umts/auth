@@ -1,0 +1,8 @@
+.card
+  .card-header User
+  .card-body
+    %dl.d-flex.flex-column.gap-2.mb-0
+      - @user.attributes.each do |key, value|
+        %div
+          %dt= User.human_attribute_name(key)
+          %dd.mb-0= value.is_a?(Date) || value.is_a?(Time) ? l(value) : value

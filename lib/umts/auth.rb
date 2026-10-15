@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
+require_relative 'auth/controller'
 require_relative 'auth/engine'
+require_relative 'auth/policy'
+require_relative 'auth/sessions_controller'
 require_relative 'auth/version'
-require_relative 'authentication'
 
 module UMTS
   module Auth
+    mattr_accessor :development_login_users, default: -> { { 'All' => User.all } }
+
     class << self
       def tenant_id = '7bd08b0b-3395-4dc1-94bb-d0b2e56a497f'
 

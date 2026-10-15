@@ -8,6 +8,10 @@ require 'rails'
 module UMTS
   module Auth
     class Engine < ::Rails::Engine
+      initializer 'umts-auth.action_policy' do
+        Rails.application.config.action_dispatch.rescue_responses['ActionPolicy::Unauthorized'] = :forbidden
+      end
+
       initializer 'umts-auth.inflection' do
         ActiveSupport::Inflector.inflections do |inflect|
           inflect.acronym 'UMTS'

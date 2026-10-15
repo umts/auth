@@ -1,0 +1,5 @@
+.card
+  .card-header Users
+  .list-group.list-group-flush
+    - @users.each do |user|
+      = link_to user.name, user_path(user), class: 'list-group-item list-group-item-action'
