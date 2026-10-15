@@ -6,13 +6,16 @@
                aria: { expanded: 'false', label: 'Toggle navigation' } do
     %span.navbar-toggler-icon
   #navbar-nav-items.collapse.navbar-collapse
-    %ul.navbar-nav.ms-auto
-      %li.nav-item.dropdown
-        = button_tag User.last.last_name,
-                     type: 'button',
-                     class: 'nav-link dropdown-toggle',
-                     'data-bs-toggle': 'dropdown',
-                     'aria-expanded': 'false'
-        %ul.dropdown-menu
-          %li= link_to 'Profile', user_path(User.last), class: 'dropdown-item'
-          %li= button_to 'Log out', logout_path, class: 'dropdown-item'
+    %ul.navbar-nav
+      %li.nav-item= link_to 'Users', users_path, class: 'nav-link'
+    - if Current.user.present?
+      %ul.navbar-nav.ms-auto
+        %li.nav-item.dropdown
+          = button_tag Current.user.name,
+                       type: 'button',
+                       class: 'nav-link dropdown-toggle',
+                       'data-bs-toggle': 'dropdown',
+                       'aria-expanded': 'false'
+          %ul.dropdown-menu
+            %li= link_to 'Profile', user_path(Current.user), class: 'dropdown-item'
+            %li= button_to 'Log out', logout_path, class: 'dropdown-item'
