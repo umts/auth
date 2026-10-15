@@ -6,6 +6,7 @@ module UMTS
       extend ActiveSupport::Concern
 
       included do
+        authorize :request
         authorize :user, allow_nil: true
         alias_rule :create?, to: :manage?
         alias_rule :new?, to: :create?

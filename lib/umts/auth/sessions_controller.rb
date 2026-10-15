@@ -48,7 +48,7 @@ module UMTS
       end
 
       class << self
-        def after_authenticated(*, &) = after_action(*, only: :create, &)
+        def after_login(*, &) = after_action(*, only: :create, &)
       end
     end
   end

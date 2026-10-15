@@ -12,19 +12,7 @@ module UMTS
         authorize :request, through: :request
         authorize :user, through: -> { Current.user }
         verify_authorized
-        rescue_from ActionPolicy::Unauthorized do |exception|
-          if session[:entra_uid].present?
-            raise exception
-            # simplecov:disable
-          elsif request.format.html? && Rails.env.production?
-            render 'umts/auth/production_login', layout: false, status: :unauthorized
-          elsif request.format.html? && Rails.env.development?
-            render 'development_login', layout: 'umts/brand/bare', status: :unauthorized
-            # simplecov:enable
-          else
-            head :unauthorized
-          end
-        end
+        rescue_from ActionPolicy::Unauthorized, with: :handle_unauthorized
       end
 
       protected
@@ -35,6 +23,18 @@ module UMTS
 
       def set_current_user
         Current.user = User.find_by(entra_uid: session[:entra_uid])
+      end
+
+      def handle_unauthorized(error)
+        raise error if session[:entra_uid].present?
+
+        if !request.format.html? || Rails.env.test?
+          head :unauthorized
+        elsif Rails.env.development?
+          render 'development_login', layout: 'umts/brand/bare', status: :unauthorized
+        else
+          render 'umts/auth/production_login', layout: false, status: :unauthorized
+        end
       end
     end
   end
