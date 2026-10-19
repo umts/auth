@@ -3,6 +3,28 @@
 require 'rails_helper'
 
 RSpec.describe 'Policies' do
+  describe 'GET /an-implicit-endpoint' do
+    subject(:call) { get users_path }
+
+    let(:user) do
+      User.create!(entra_uid: 'bobo-test',
+                   entra_upn: 'bobo@test.com',
+                   first_name: 'Bobo',
+                   last_name: 'Test',
+                   email: 'bobo@test.com')
+    end
+
+    before do
+      OmniAuth.config.mock_auth[:entra_id] = OmniAuth::AuthHash.new(uid: user.entra_uid)
+      get '/auth/entra_id/callback'
+    end
+
+    it 'looks up policies correctly' do
+      call
+      expect(response).to be_successful
+    end
+  end
+
   describe 'GET /a-privileged-endpoint' do
     subject(:call) { get user_path(target_user) }
 
