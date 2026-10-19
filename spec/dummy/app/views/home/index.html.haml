@@ -1,0 +1,9 @@
+.card.mb-3
+  .card-header Session
+  .card-body
+    %dl.d-flex.flex-column.gap-2.mb-0
+      - session.each do |key, value|
+        %div
+          %dt= key
+          %dd.mb-0= value
+= button_to 'Log in', entra_login_path, class: 'btn btn-primary', form_class: 'd-grid' unless session.key?(:entra_uid)

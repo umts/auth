@@ -24,5 +24,6 @@ gem 'rubocop-rake', require: false
 gem 'rubocop-rspec', require: false
 gem 'rubocop-rspec_rails', require: false
 gem 'simplecov', require: false
+gem 'sqlite3'
 gem 'umts-brand', '0.0.0.pre.dev', github: 'umts/brand', branch: 'main'
 gem 'web-console', group: :development

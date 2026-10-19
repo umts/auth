@@ -1,0 +1,7 @@
+!!!
+%html{ lang: I18n.locale }
+  %head
+    %meta{ charset: 'UTF-8' }
+  %body
+    = form_with url: main_app.entra_login_path, html: { id: 'production-login-form' }
+    = javascript_tag 'document.getElementById("production-login-form").submit();', nonce: true

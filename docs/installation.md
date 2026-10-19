@@ -29,12 +29,10 @@ ENTRA_ID__CLIENT_SECRET="YOUR_CLIENT_SECRET"
 And providers will be automatically set up to route login and logout requests to `session#create` and
 `sessions#destroy`.
 
-Now define your controller and include the base authentication logic.
-
 ```ruby
 # app/controllers/sessions_controller.rb
 
-class SessionsController < ApplicationController
+class SessionsController < UMTS::Auth::SessionsController
   include UMTS::Authentication
 end
 ```

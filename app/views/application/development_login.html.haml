@@ -1,0 +1,17 @@
+.card.mb-3
+  .card-header Development Login
+  .card-body
+    - UMTS::Auth.development_login_users.call.compact_blank.each do |name, users|
+      .mb-3
+        = form_with url: main_app.auth_callback_path(provider: 'developer'), method: :get, namespace: name do |f|
+          = f.label :uid, name, class: 'form-label'
+          .input-group
+            = f.collection_select :uid, users, :entra_uid, :name, { include_blank: false },
+                                  class: 'form-select', 'data-controller': 'tom-select'
+            = f.submit 'Log in', class: 'btn btn-neutral'
+    %div
+      = form_with url: main_app.entra_login_path do |f|
+        = f.label :entra, class: 'form-label'
+        .input-group
+          = text_field_tag :entra, 'Yourself', readonly: true, class: 'form-control'
+          = f.submit 'Log in', class: 'btn btn-neutral'
