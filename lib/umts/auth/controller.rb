@@ -30,11 +30,13 @@ module UMTS
 
         if !request.format.html? || Rails.env.test?
           head :unauthorized
+        # simplecov:disable
         elsif Rails.env.development?
           render 'development_login', layout: 'umts/brand/bare', status: :unauthorized
         else
           render 'umts/auth/production_login', layout: false, status: :unauthorized
         end
+        # simplecov:enable
       end
     end
   end

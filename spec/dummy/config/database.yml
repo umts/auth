@@ -7,4 +7,4 @@ development:
 
 test:
   <<: *default
-  database: storage/development.sqlite3
+  database: storage/test.sqlite3

@@ -12,7 +12,6 @@ RSpec.describe 'Sessions' do
   end
 
   before do
-    OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:entra_id] = OmniAuth::AuthHash.new(
       uid: 'my-uid',
       info: { email: 'email@test.com', first_name: 'Bobo', last_name: 'Test' },

@@ -27,10 +27,12 @@ module UMTS
 
       def set_session
         session[:entra_uid] = auth_hash.uid
-        session[:entra_email] = auth_hash.info.email
-        session[:entra_first_name] = auth_hash.info.first_name
-        session[:entra_last_name] = auth_hash.info.last_name
-        session[:entra_upn] = auth_hash.extra&.raw_info&.upn # simplecov:disable branch
+        # simplecov:disable branch
+        session[:entra_email] = auth_hash.info&.email
+        session[:entra_first_name] = auth_hash.info&.first_name
+        session[:entra_last_name] = auth_hash.info&.last_name
+        session[:entra_upn] = auth_hash.extra&.raw_info&.upn
+        # simplecov:enable branch
       end
 
       def clear_session

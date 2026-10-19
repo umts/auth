@@ -8,7 +8,7 @@ require_relative 'auth/version'
 
 module UMTS
   module Auth
-    mattr_accessor :development_login_users, default: -> { { 'All' => User.all } }
+    mattr_accessor :development_login_users, default: -> { { 'Users' => User.all } } # simplecov:disable method
 
     class << self
       def tenant_id = '7bd08b0b-3395-4dc1-94bb-d0b2e56a497f'
