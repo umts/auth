@@ -4,10 +4,9 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative 'dummy/config/environment'
 require 'rspec/rails'
+require 'umts/auth/rspec'
 
 ActiveRecord::Migration.maintain_test_schema!
-
-OmniAuth.config.test_mode = true
 
 RSpec.configure do |config|
   config.filter_rails_from_backtrace!
