@@ -6,13 +6,7 @@ RSpec.describe 'Policies' do
   describe 'GET /an-implicit-endpoint' do
     subject(:call) { get users_path }
 
-    let(:current_user) do
-      User.create!(entra_uid: 'bobo-test',
-                   entra_upn: 'bobo@test.com',
-                   first_name: 'Bobo',
-                   last_name: 'Test',
-                   email: 'bobo@test.com')
-    end
+    let(:current_user) { create(:user) }
 
     it 'looks up policies correctly' do
       call
@@ -23,13 +17,7 @@ RSpec.describe 'Policies' do
   describe 'GET /a-privileged-endpoint' do
     subject(:call) { get user_path(target_user) }
 
-    let(:target_user) do
-      User.create!(entra_uid: 'bobo-test',
-                   entra_upn: 'bobo@test.com',
-                   first_name: 'Bobo',
-                   last_name: 'Test',
-                   email: 'bobo@test.com')
-    end
+    let(:target_user) { create(:user) }
 
     context 'when not authenticated' do
       let(:current_user) { nil }
@@ -41,13 +29,7 @@ RSpec.describe 'Policies' do
     end
 
     context 'when authenticated but not authorized' do
-      let(:current_user) do
-        User.create!(entra_uid: 'gobo-test',
-                     entra_upn: 'gobo@test.com',
-                     first_name: 'Gobo',
-                     last_name: 'Test',
-                     email: 'gobo@test.com')
-      end
+      let(:current_user) { create(:user) }
 
       it 'responds with a forbidden status' do
         expect { call }.to raise_error(ActionPolicy::Unauthorized)

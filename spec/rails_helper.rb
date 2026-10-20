@@ -12,6 +12,7 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.infer_spec_type_from_file_location!
   config.use_transactional_fixtures = true
+  config.include FactoryBot::Syntax::Methods
   config.before :each, type: :system do
     driven_by :rack_test
   end

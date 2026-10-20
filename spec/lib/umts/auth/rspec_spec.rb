@@ -12,13 +12,7 @@ RSpec.describe UMTS::Auth::RSpec do # rubocop:disable RSpec/MultipleDescribes
   end
 
   context 'with a current user' do
-    let(:current_user) do
-      User.create!(entra_uid: 'bobo-test',
-                   entra_upn: 'bobo@test.com',
-                   first_name: 'Bobo',
-                   last_name: 'Test',
-                   email: 'bobo@test.com')
-    end
+    let(:current_user) { create(:user) }
 
     it 'logs in' do
       expect(Current.user).to be(current_user)
@@ -26,20 +20,8 @@ RSpec.describe UMTS::Auth::RSpec do # rubocop:disable RSpec/MultipleDescribes
   end
 
   context 'when switching users' do
-    let(:current_user) do
-      User.create!(entra_uid: 'bobo-test',
-                   entra_upn: 'bobo@test.com',
-                   first_name: 'Bobo',
-                   last_name: 'Test',
-                   email: 'bobo@test.com')
-    end
-    let(:other_user) do
-      User.create!(entra_uid: 'gobo-test',
-                   entra_upn: 'gobo@test.com',
-                   first_name: 'Gobo',
-                   last_name: 'Test',
-                   email: 'gobo@test.com')
-    end
+    let(:current_user) { create(:user) }
+    let(:other_user) { create(:user) }
 
     before { login_as other_user }
 
@@ -59,13 +41,7 @@ RSpec.describe UMTS::Auth::RSpec, type: :request do
   end
 
   context 'with a current user' do
-    let(:current_user) do
-      User.create!(entra_uid: 'bobo-test',
-                   entra_upn: 'bobo@test.com',
-                   first_name: 'Bobo',
-                   last_name: 'Test',
-                   email: 'bobo@test.com')
-    end
+    let(:current_user) { create(:user) }
 
     it 'logs in' do
       expect(session[:entra_uid]).to eq(current_user.entra_uid)
@@ -74,13 +50,7 @@ RSpec.describe UMTS::Auth::RSpec, type: :request do
 end
 
 RSpec.describe UMTS::Auth::RSpec, type: :system do
-  let(:current_user) do
-    User.create!(entra_uid: 'bobo-test',
-                 entra_upn: 'bobo@test.com',
-                 first_name: 'Bobo',
-                 last_name: 'Test',
-                 email: 'bobo@test.com')
-  end
+  let(:current_user) { create(:user) }
 
   before { visit root_path }
 
