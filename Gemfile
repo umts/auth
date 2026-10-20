@@ -4,26 +4,32 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'capybara'
 gem 'cssbundling-rails'
 gem 'dotenv'
-gem 'faker'
-gem 'haml-lint', require: false
 gem 'haml-rails'
 gem 'jsbundling-rails'
 gem 'listen'
-gem 'overcommit', require: false
 gem 'propshaft'
 gem 'puma', require: false
 gem 'rake', require: false
 gem 'rspec-rails', require: false
-gem 'rubocop-capybara', require: false
-gem 'rubocop-performance', require: false
-gem 'rubocop-rails', require: false
-gem 'rubocop-rake', require: false
-gem 'rubocop-rspec', require: false
-gem 'rubocop-rspec_rails', require: false
-gem 'simplecov', require: false
 gem 'sqlite3'
 gem 'umts-brand', '0.0.0.pre.dev', github: 'umts/brand', branch: 'main'
-gem 'web-console', group: :development
+
+group :development do
+  gem 'haml-lint', require: false
+  gem 'overcommit', require: false
+  gem 'rubocop-capybara', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rake', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-rspec_rails', require: false
+  gem 'web-console'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'factory_bot_rails'
+  gem 'simplecov', require: false
+end
