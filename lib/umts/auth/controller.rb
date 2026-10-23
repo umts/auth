@@ -10,7 +10,7 @@ module UMTS
       included do
         before_action :set_current_user
         authorize :request, through: :request
-        authorize :user, through: -> { Current.user }
+        authorize :user, through: -> { ::Current.user }
         verify_authorized
         rescue_from ActionPolicy::Unauthorized, with: :handle_unauthorized
       end
@@ -22,7 +22,7 @@ module UMTS
       private
 
       def set_current_user
-        Current.user = User.find_by(entra_uid: session[:entra_uid])
+        ::Current.user = User.find_by(entra_uid: session[:entra_uid])
       end
 
       def handle_unauthorized(error)

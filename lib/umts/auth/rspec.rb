@@ -14,7 +14,7 @@ module UMTS
         if self <= ::RSpec::Rails::RequestExampleGroup || self <= ::RSpec::Rails::SystemExampleGroup
           before { login_as(current_user) if current_user.present? }
         else
-          around { |example| Current.set(user: current_user) { example.run } }
+          around { |example| ::Current.set(user: current_user) { example.run } }
         end
       end
 
@@ -32,7 +32,7 @@ module UMTS
       private
 
       def current_login_as(user)
-        Current.user = user
+        ::Current.user = user
       end
 
       def rack_login_as(user)

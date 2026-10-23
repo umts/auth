@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'auth/controller'
+require_relative 'auth/current'
 require_relative 'auth/engine'
 require_relative 'auth/policy'
 require_relative 'auth/sessions_controller'
