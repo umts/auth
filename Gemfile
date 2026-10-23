@@ -14,6 +14,7 @@ gem 'puma', require: false
 gem 'rake', require: false
 gem 'rspec-rails', require: false
 gem 'sqlite3'
+# TODO: Move to gemspec.
 gem 'umts-brand', '0.0.0.pre.dev', github: 'umts/brand', branch: 'main'
 
 group :development do
