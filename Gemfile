@@ -9,6 +9,7 @@ gem 'dotenv'
 gem 'haml-rails'
 gem 'jsbundling-rails'
 gem 'listen'
+gem 'paper_trail'
 gem 'propshaft'
 gem 'puma', require: false
 gem 'rake', require: false
