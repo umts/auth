@@ -9,5 +9,12 @@ hero:
       link: /installation
     - theme: alt
       text: Reference
-      link: /reference
+      link: /authentication
+features:
+  - title: Authentication
+    details: Authenticate users via Microsoft Entra ID.
+    link: /authentication
+  - title: Authorization
+    details: Authorize users/control access via Action Policy.
+    link: /authorization
 ---
