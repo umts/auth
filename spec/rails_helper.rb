@@ -3,6 +3,7 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative 'dummy/config/environment'
+require 'paper_trail/frameworks/rspec'
 require 'rspec/rails'
 require 'umts/auth/rspec'
 
