@@ -8,10 +8,9 @@ This library is distributed as a rubygem.
 gem 'umts-auth'
 ```
 
-OmniAuth is configured automatically in an initializer, but you must configure your own oauth credentials. These
-are automatically read via the `creds` API.
+---
 
-Define them in your credentials...
+Define your Entra ID client in your credentials...
 
 ```yml
 entra_id:
@@ -26,13 +25,63 @@ ENTRA_ID__CLIENT_ID="YOUR_CLIENT_ID"
 ENTRA_ID__CLIENT_SECRET="YOUR_CLIENT_SECRET"
 ```
 
-And providers will be automatically set up to route login and logout requests to `session#create` and
-`sessions#destroy`.
+---
+
+Ensure you have a `User` model with unique string column named `entra_uid`.
+
+---
+
+Set up your `Current` model.
+
+```ruby
+# app/models/current.rb
+
+class Current < ActiveSupport::CurrentAttributes
+  include UMTS::Auth::Current
+end
+```
+
+---
+
+Set up your `ApplicationController`.
+
+```ruby
+# app/controllers/application_controller.rb
+
+class ApplicationController < ActionController::Base
+  include UMTS::Auth::Controller
+end
+```
+
+---
+
+Set up your `SessionsController`.
 
 ```ruby
 # app/controllers/sessions_controller.rb
 
 class SessionsController < UMTS::Auth::SessionsController
-  include UMTS::Authentication
 end
+```
+
+---
+
+Set up your `ApplicationPolicy`.
+
+```ruby
+# app/policies/application_policy.rb
+
+class ApplicationPolicy < ActionPolicy::Base
+  include UMTS::Auth::Policy
+end
+```
+
+---
+
+Include rspec helpers.
+
+```ruby
+# spec/rails_helper.rb
+
+require 'umts/auth/rspec'
 ```
