@@ -22,7 +22,7 @@ module UMTS
       private
 
       def set_current_user
-        ::Current.user = User.find_by(entra_uid: session[:entra_uid])
+        ::Current.user = session[:entra_uid].presence&.then { |entra_uid| User.find_by(entra_uid:) }
       end
 
       def handle_unauthorized(error)
